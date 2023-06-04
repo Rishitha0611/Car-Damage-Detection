@@ -1,5 +1,8 @@
 # Car-Damage-Detection
 
+For the **data collection**,120 images were captured around the college campus using a mobile phone camera. The images were then saved in the JPG format to ensure compatibility with most image processing tools. The VIA tool was used to annotate the images by drawing boxes around the scratch areas and labeling them as
+"scratch." Each image was uploaded to the VIA tool and manually annotated by a team of annotators to ensure accuracy and consistency in the labeling.
+
 **Pre-Processing**
 loaded the images from the directory and applied a set of transformations to them using the PyTorch transforms module. Specifically, it does the following:
 • Resizes each image to a square of size 224x224 pixels.
