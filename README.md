@@ -1,29 +1,23 @@
 # Car-Damage-Detection
 
 **Pre-Processing**
-Here, we have loaded the images from the directory and applied a set of transformations to
-them using the PyTorch transforms module. Specifically, it does the following:
+loaded the images from the directory and applied a set of transformations to them using the PyTorch transforms module. Specifically, it does the following:
 • Resizes each image to a square of size 224x224 pixels.
 • Crops the center of the image to a square of size 224x224 pixels.
 • Converts the image to a PyTorch tensor.
 • Normalizes the tensor with the mean and standard deviation values provided.
-The resulting dataset is then loaded using the ImageFolder class from the torchvision.datasets
-module. This class assumes that the images are organized in subfolders based on their class
-labels, where the name of each subfolder corresponds to the name of a class.The ImageFolder
-class automatically assigns a numerical label to each class based on its position in the
-alphabetically sorted list of subfolder names.
-Finally, the DataLoader class from the torch.utils.data module is used to create a data loader
-that will feed the images to the neural network during training. This allows the images to be
-loaded in batches and shuffled randomly to improve the training process.
-We then split the data into train test and validation sets.
 
 **Model**
-We loaded the ResNet-50 model with pre-trained weights using the torchvision.models
-module. The model’s module provides a range of pre-trained models with varying
-architectures and levels of complexity. In this case, we are specifically loading the ResNet-50
-model by calling the resnet50() function from the module and setting the pretrained argument
-to True to load the pre-trained weights. This will automatically download the weights if they
-have not already been downloaded and load them into the model.
+The ResNet-50 model with pre-trained weights using the torchvision.models module was loaded. The model’s module provides a range of pre-trained models with varying
+architectures and levels of complexity. 
+
+**Model Training**
+The ResNet-50 model using stochastic gradient descent (SGD) optimizer with different learning rates on a given training dataset was trained. The training is performed for a fixed number of epochs (50), and the loss values for each epoch are recorded in a list loss_values. The learning_rates list contains three different learning rates (0.1, 0.01, and 0.001).
+
+**Evaluation**
+For the evaluation, the ratio of positive region of interests (ROIs) in a set of images was checked. If random_rois is set to True, the code generates a data generator and iterates over a set of images a specified number of times (here 10) to count the number of positive ROIs and calculate their ratio. The total variable keeps track of the total number of positive ROIs across all images and the final print statement calculates and prints the average percent of positive
+ROIs across all images. We got an average percentage of 33%.
+
 
 
 
